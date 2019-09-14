@@ -14,7 +14,8 @@ RUN yum -y install GeoIP luajit libnet jansson libyaml cargo rustc && \
     yum -y erase epel-release && yum clean all && rm -rf /var/cache/yum
 
 # Install the Suricata package
-RUN rpm -i https://github.com/vivekshwarup/suricata/blob/master/suricata-4.1.4.0.rpm
+RUN ./suricata-4.1.4.0.rpm /tmp/suricata-4.1.4.0.rpm
+RUN rpm -ivh /tmp/suricata-4.1.4.0.rpm
 # Create Suricata User.
 RUN groupadd --gid 940 suricata && \
     adduser --uid 940 --gid 940 \
